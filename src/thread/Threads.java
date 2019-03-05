@@ -5,14 +5,16 @@ import ui.CircleController;
 public class Threads extends Thread{
 	
 	private CircleController cc;
+	private boolean c;
 	
 	public Threads(CircleController cc) {
 		this.cc = cc;
+		c = true;
 	}
 	
 	public void run() {
 		boolean r = true;
-		while(true) {
+		while(c) {
 			
 			r = cc.rigth(r);
 			r = cc.left(r);
@@ -23,5 +25,13 @@ public class Threads extends Thread{
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void s() {
+		c = !c;
+	}
+	
+	public boolean getC() {
+		return c;
 	}
 }

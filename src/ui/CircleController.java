@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import thread.Threads;
@@ -18,15 +19,33 @@ public class CircleController {
 
     @FXML
     private Pane pane;
-
+    
     @FXML
     private Rectangle shape;
 
     @FXML
+    private Button move;
+
+    @FXML
+    private Button stop;
+    
+    private Threads t;
+    
+    @FXML
     void move(ActionEvent event) {
-    	Threads t = new Threads(this);
-    	
+    	t = new Threads(this);
     	t.start();
+    	
+    	stop.setDisable(false);
+    	move.setDisable(true);
+    }
+    
+	@FXML
+    void stop(ActionEvent event) {
+    	stop.setDisable(true);
+    	move.setDisable(false);
+    	t.s();
+    	
     }
     
     public boolean rigth(boolean r) {
