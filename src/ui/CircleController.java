@@ -31,9 +31,11 @@ public class CircleController {
     
     private Threads t;
     
+    private boolean r;
+    
     @FXML
     void move(ActionEvent event) {
-    	t = new Threads(this);
+    	t = new Threads(this,r);
     	t.start();
     	
     	stop.setDisable(false);
@@ -45,7 +47,7 @@ public class CircleController {
     	stop.setDisable(true);
     	move.setDisable(false);
     	t.s();
-    	
+    	r = t.getR();
     }
     
     public boolean rigth(boolean r) {
@@ -71,7 +73,9 @@ public class CircleController {
 		}	
 		return r;
     }
-
+    	
+    
+    
     @FXML
     void initialize() {
         assert pane != null : "fx:id=\"pane\" was not injected: check your FXML file 'Circle.fxml'.";

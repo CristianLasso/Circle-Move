@@ -6,14 +6,15 @@ public class Threads extends Thread{
 	
 	private CircleController cc;
 	private boolean c;
+	private boolean r;
 	
-	public Threads(CircleController cc) {
+	public Threads(CircleController cc, boolean r) {
 		this.cc = cc;
 		c = true;
+		this.r = r;
 	}
 	
 	public void run() {
-		boolean r = true;
 		while(c) {
 			
 			r = cc.rigth(r);
@@ -33,5 +34,9 @@ public class Threads extends Thread{
 	
 	public boolean getC() {
 		return c;
+	}
+	
+	public boolean getR() {
+		return r;
 	}
 }
