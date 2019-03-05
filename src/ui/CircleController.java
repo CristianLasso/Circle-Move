@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import thread.Threads;
 
 public class CircleController {
@@ -20,7 +20,7 @@ public class CircleController {
     private Pane pane;
 
     @FXML
-    private Circle shape;
+    private Rectangle shape;
 
     @FXML
     void move(ActionEvent event) {
@@ -32,9 +32,10 @@ public class CircleController {
     public boolean rigth(boolean r) {
     	if(r) {
     		shape.setLayoutX(shape.getLayoutX()+5);
+    		shape.setRotate(shape.getRotate()+4);
     		System.out.println("Derecha");
     	}
-    	if(shape.getLayoutX()>=pane.getWidth()) {
+    	if(shape.getLayoutX()>=pane.getWidth()-shape.getWidth()) {
 			r = false;
 		}
 		return r;
@@ -43,6 +44,7 @@ public class CircleController {
     public boolean left(boolean r) {
     	if(!r) {
     		shape.setLayoutX(shape.getLayoutX()-5);
+    		shape.setRotate(shape.getRotate()-4);
     		System.out.println("Izquierda");
     	}
     	if(shape.getLayoutX()<=0) {
